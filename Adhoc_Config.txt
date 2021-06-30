@@ -1,0 +1,66 @@
+****Windows-Configuration****
+1.Open Command Prompt and type
+	netsh wlan show driver
+2. Check if your hosted network supported option : Yes. If it says No, find a driver and download it.
+3. Go to Network and Sharing center->Set-up Manually-->Enter SSID ("vehicleAdhoc") and leave the rest as is.
+4. Now in command prompt set up
+	netsh wlan set profileparameter name="vehicleAdhoc" connectiontype=ibss
+-->it should say updated successfully. 
+5.Now connect to adhoc network as follows
+  	netsh wlan connect "vehicleAdhoc"
+6. Test the connection via a ping packet from command prompt. Also SSH into it. Adhoc-Mode is read!
+
+**Linux-Configuration
+https://help.ubuntu.com/community/WifiDocs/Adhoc
+
+
+*****On the Raspberry Pi******
+1. Edit the /etc/network/interfaces {always keep a backup before editing this file}. Add the following.
+
+auto wlan0
+iface wlan0 inet static
+  address 192.168.4.1  {assign in any non-conflicting subnet}
+  netmask 255.255.255.0
+  wireless-channel 1
+  wireless-essid vehicleAdhoc
+  wireless-mode ad-hoc
+
+##
+iface eth0 inet manual
+
+iface wlan1 inet manual
+  wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+##
+
+2. For assigning ip address install :sudo apt-get install isc-dhcp-server
+3. Edit the default dhcp server as follows
+       sudo nano /etc/default/isc-dhcp-server
+ Add the network interfaces in 
+        INTERFACESv4="wlan0"
+4. Now edit the dhcp.conf file
+	sudo nano /etc/dhcp/dhcpd.conf
+5. Uncomment "authoratitive" keyword. This is to make Rpi/dhcp server the authoratative ip distributing source.
+6. Uncomment 
+ subnet 192.168.4.0 netmask 255.255.255.0 {
+	range 192.168.4.150 192.168.4.170; //specify a range this is the distribution
+	option domain-name and domain name-servers-->dont need to change;
+	option routers 192.168.4.1;
+	option broadcast-address 192.168.4.255;
+	default-lease-time 600;
+	max-lease-time 7200;
+}
+7. Reboot the Rpi before that add brcmfmac in to your /etc/modules file for availability of chipset on boot.
+
+Disconnect from previous network. You should be able to see the "vehicleAdhoc" in the SSID list
+
+**Connecting Multiple Pis
+1. sudo iwconfig wlan1 mode ad-hoc channel 01 essid vehicleAdhoc
+This connects all the adhoc modules to the ad-hoc channel
+
+
+**Auto Networking**
+1. Go to sudo /etc/rc.local and add the following to the interfaces (one or both)
+iwconfig wlan0 mode ad-hoc essid vehicleAdhoc channel 01
+***Useful References**
+https://raspberrypi.stackexchange.com/questions/64151/how-to-connect-two-pi-3-to-each-other-through-ad-hoc-connection
+http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/
