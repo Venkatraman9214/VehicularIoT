@@ -6,7 +6,7 @@ Beta testing of the VeNet Model
 
 ![Scaled Vehicle Test](https://user-images.githubusercontent.com/18708096/125177945-10f54280-e1ae-11eb-98d9-1ae5b4f7ea0d.mp4)
 
-# VehicularIoT
+# VeNet
 This project works on two main protocols one is ad-hoc network over a P2P protocol and two, its the MQTT message querying that is built on top of this. 
 
 I have added the basic set up configurations for everyone to replicate such a system and use it as per their desires.
