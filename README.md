@@ -31,6 +31,6 @@ Misc Parts – Some of the hot glued thick edges were from an expensive mfg purc
 
 # Python Files
 
-The man_s, man_r, man_l files represent the 
+The man_s, man_r, man_l files represent the different maneouvres which were used to conduct the tests (namely straight, left and right). The values calculated are for each wheel and the data collected represents the RPS values. 
 
 Stay tuned for more updates!
