@@ -14,7 +14,7 @@ I have added the basic set up configurations for everyone to replicate such a sy
 The pin configurations are mentioned in the beginning for better understanding. For other hardware builds, here is a quick run-down.
 
 --The Chassis Base. This is an acrylic plastic base, precut with several holes to mount components. You can get it on variable sizes on amazon or adafruit website based on your needs.
-![WhatsApp Image 2021-07-07 at 8 22 53 PM](https://user-images.githubusercontent.com/18708096/125177903-ab08bb00-e1ad-11eb-803f-d9a8a43f1b21.jpeg)
+![Scaled Vehicle](https://user-images.githubusercontent.com/18708096/125177903-ab08bb00-e1ad-11eb-803f-d9a8a43f1b21.jpeg)
 
 --Motor Mounts. Some of the kits use acrylic for this as well, others use aluminum brackets. Mounting the motors is probably the thing that confuses most users so I’ll illustrate that in detail.
 
