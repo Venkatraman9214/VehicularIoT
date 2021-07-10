@@ -29,4 +29,8 @@ The pin configurations are mentioned in the beginning for better understanding. 
 --Mounting Hardware. All of the nuts, bolts and spacers you will need to put the chassis together.  You’ll need to supply more hardware to mount your own components on the base.
 Misc Parts – Some of the hot glued thick edges were from an expensive mfg purchased at the university.
 
+#Python Files
+
+The man_s, man_r, man_l files represent the 
+
 Stay tuned for more updates!
